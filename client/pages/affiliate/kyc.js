@@ -17,7 +17,7 @@ const affiliateIndex = () => {
   } = useContext(Context);
   const [courses, setCourses] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(1);
 
   useEffect(() => {
     loadCourses();
@@ -34,13 +34,12 @@ const affiliateIndex = () => {
       setLoading(false);
     }
   };
-  const nextStep=()=>{
-    setStep(step+1);
-  }
-  const prevStep=()=>{
-      setStep(step-1);
-  }
-  //user && console.log(user)
+  const nextStep = () => {
+    setStep(step + 1);
+  };
+  const prevStep = () => {
+    setStep(step - 1);
+  };
   return (
     <AffiliateRoute>
       {loading && (
@@ -49,29 +48,28 @@ const affiliateIndex = () => {
           className="d-flex justify-content-center display-1 text-danger p-5"
         />
       )}
-        <div className="ap-sub-heading">KYC</div>
-          <div className="d-flex justify-content-around">
-            <div>
-                <input type="checkbox" name="pi" id="pi" checked={step>1}></input>
-                <label for="pi">Profile Information</label>
-            </div>
-            <div>
-                <input type="checkbox" name="ad" id="ad" checked={step>2}></input>
-                <label for="ad">Account Details</label>
-            </div>
-            <div>
-                <input type="checkbox" name="pc" id="pc" checked={step>3}></input>
-                <label for="pc">PAN Information</label>
-            </div>
-          </div>
-            {
-                step==1 ? 
-                <ProfileForm nextStep={nextStep} prevStep={prevStep} />:
-                step==2? 
-                <AccountDetails nextStep={nextStep} prevStep={prevStep}  />:
-                <PanForm nextStep={nextStep} prevStep={prevStep}  />
-            }
-
+      <div className="ap-sub-heading">KYC</div>
+      <div className="d-flex justify-content-around">
+        <div className="kyc-checkbox">
+          <input type="checkbox" name="pi" id="pi" checked={step > 1}></input>
+          <label for="pi">Profile Information</label>
+        </div>
+        <div className="kyc-checkbox">
+          <input type="checkbox" name="ad" id="ad" checked={step > 2}></input>
+          <label for="ad">Account Details</label>
+        </div>
+        <div className="kyc-checkbox">
+          <input type="checkbox" name="pc" id="pc" checked={step > 3}></input>
+          <label for="pc">PAN Information</label>
+        </div>
+      </div>
+      {step == 1 ? (
+        <ProfileForm nextStep={nextStep} prevStep={prevStep} />
+      ) : step == 2 ? (
+        <AccountDetails nextStep={nextStep} prevStep={prevStep} />
+      ) : (
+        <PanForm nextStep={nextStep} prevStep={prevStep} />
+      )}
     </AffiliateRoute>
   );
 };

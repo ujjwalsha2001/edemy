@@ -25,7 +25,7 @@ const affiliateIndex = () => {
       )}
       <h1 className="jumbotron text-center square mb-5">Leaderboard</h1>
         
-        <div className="d-flex flex-wrap justify-content-between">
+        <div className="leaderboard d-flex flex-wrap justify-content-between">
             <div>
                 <h5>Last 7 days</h5>
                 <LeaderCard />
